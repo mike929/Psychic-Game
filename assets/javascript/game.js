@@ -5,10 +5,12 @@ var computerChoices = ["r", "p", "s", "t", "l", "j"];
 var wins = 0;
 var losses = 0;
 var Guesses = 9;
+var allUserGuess = "";
 
 // reset game with either win or 0 guesses
 var resetGuesses = function () {
-    Guesses = 9; 
+    Guesses = 9;
+    allUserGuess = ""; 
     document.querySelector("#Guesses").innerHTML = '';
 }   
 // Create variables that hold references to the places in the HTML where we want to display things.
@@ -25,7 +27,7 @@ document.onkeyup = function (event) {
     // Determines which key was pressed.
     var userGuess = event.key;
     // var yourGuess = userGuess;
-console.log(userGuess)
+console.log(userGuess);
 
     // Randomly chooses a choice from the options array.
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
@@ -48,14 +50,13 @@ console.log(userGuess)
                 losses++;
                 resetGuesses();
         }
+        console.log(computerGuess);
 
-            
-
-console.log(computerGuess)
+        allUserGuess = allUserGuess + " " + userGuess;
 
         
 
-        userChoiceText.textContent = "Your Guesses so far:  " + userGuess;
+        userChoiceText.textContent = "Your Guesses so far:  " + allUserGuess;
         winsText.textContent = "Wins: " + wins;
         lossesText.textContent = "Losses: " + losses;
         GuessesText.textContent = "GuessesLeft: " + Guesses--;

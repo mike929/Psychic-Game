@@ -6,6 +6,11 @@ var wins = 0;
 var losses = 0;
 var Guesses = 9;
 
+// reset game with either win or 0 guesses
+var resetGuesses = function () {
+    Guesses = 9; 
+    document.querySelector("#Guesses").innerHTML = '';
+}   
 // Create variables that hold references to the places in the HTML where we want to display things.
 var directionsText = document.getElementById("GameDirections");
 var userChoiceText = document.getElementById("GuessesLeft");
@@ -19,12 +24,12 @@ document.onkeyup = function (event) {
 
     // Determines which key was pressed.
     var userGuess = event.key;
-
+    // var yourGuess = userGuess;
+console.log(userGuess)
     // Randomly chooses a choice from the options array.
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
     // determines the outcome of the game (win/loss/tries), and increments the appropriate number
-    // var letterRemaining = computerGuess.length;
 
 
     // while (Guesses >= 0) {
@@ -35,32 +40,26 @@ document.onkeyup = function (event) {
 
             if ((userGuess===computerGuess)) {
             wins++;
-            
+            resetGuesses(); 
             // alert("Wins: " + wins);
 
-        }       if (Guesses === 0) {
+        }       if (Guesses == 0) {
                 losses++;
-            
+                resetGuesses();
         }
-            
-    // }
 
-        // break;
+            
 
 console.log(computerGuess)
-        // Hide the directions
-        // directionsText.textContent = "";
 
-        // Display the user guesses and wins/losses/tries.
-        userChoiceText.textContent = "Your Guesses so far: " + userGuess;
-        // Hide the computer choice
-        // computerChoiceText.textContent = "The computer chose: " + computerGuess;
-        // computerChoiceText.textContent = "" + computerGuess;
+        
+
+        userChoiceText.textContent = "Your Guesses so far:  " + userGuess;
         winsText.textContent = "Wins: " + wins;
         lossesText.textContent = "Losses: " + losses;
         GuessesText.textContent = "GuessesLeft: " + Guesses--;
-        // GuessesText.textContent = "GuessesLeft: " + Guesses --;
-        // userChoiceText.textContent = "Your Guesses so Far: "
+ 
     }
+
     
 };

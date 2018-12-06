@@ -26,6 +26,7 @@ document.onkeyup = function (event) {
     var userGuess = event.key;
     // var yourGuess = userGuess;
 console.log(userGuess)
+
     // Randomly chooses a choice from the options array.
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
@@ -58,8 +59,8 @@ console.log(computerGuess)
         winsText.textContent = "Wins: " + wins;
         lossesText.textContent = "Losses: " + losses;
         GuessesText.textContent = "GuessesLeft: " + Guesses--;
- 
+        // document.querySelector("#GuessesLeft").innerHTML + userGuess;
     }
-
+console.log(Guesses);
     
 };
